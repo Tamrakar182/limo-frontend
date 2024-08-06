@@ -11,6 +11,9 @@ import scrollTop from "@lib/util/scrollTop"
 import Image from "next/image"
 import { useDropdown } from "@lib/context/dropdown-context"
 import FleetDropdown from "@modules/layout/components/fleet-dropdown"
+import Button from "@modules/common/components/button"
+import { Phone, Facebook, Twitter, Instagram, Mail } from "iconoir-react"
+import MobileMenu from "../mobile-menu"
 
 const NavBar = () => {
   const pathname = usePathname()
@@ -30,19 +33,37 @@ const NavBar = () => {
 
   return (
     <div
-      className={clsx("top-0 inset-x-0 w-full z-50 group border border-b")}
+      className={clsx("sticky top-0 inset-x-0 w-full z-40 group")}
     >
       <header
         className={clsx(
-          "relative h-24 px-8 transition-colors bg-white hover:bg-transparent duration-200",
+          "relative h-30 transition-colors flex flex-col bg-white duration-200",
           {
             "!bg-white !border-gray-200": !isHome || state || servicesDropdown || fleet,
           }
         )}
       >
+        <nav className="bg-black hidden sm:flex flex-row justify-between py-4 px-8">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-row gap-2 text-white cursor-pointer hover:text-gray-400">
+              <Phone width={24} height={24} />
+              <p>+977 98XXXXXX</p>
+            </div>
+            <div className="flex flex-row gap-2 text-white cursor-pointer hover:text-gray-400">
+              <Mail width={24} height={24} />
+              <p>info@mail.com</p>
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-4">
+            <Facebook width={24} height={24} className=" text-white cursor-pointer hover:text-gray-400" />
+            <Twitter width={24} height={24} className=" text-white cursor-pointer hover:text-gray-400" />
+            <Instagram width={24} height={24} className=" text-white cursor-pointer hover:text-gray-400" />
+          </div>
+        </nav>
         <nav
           className={clsx(
-            "text-gray-900 flex items-center justify-between w-full h-full text-small-regular transition-colors duration-200",
+            "text-gray-900 px-8 py-4 border-b flex items-center justify-between w-full h-full text-small-regular transition-colors duration-200",
             {
               "text-white": isHome && !state && !servicesDropdown && !fleet,
             }
@@ -59,20 +80,21 @@ const NavBar = () => {
             <div className="ml-6">
               <FleetDropdown />
             </div>
-            <div className="ml-6 text-black text-2xl ">
-                About Us
+            <div className="ml-6 underline-animation cursor-pointer text-black text-xl ">
+              About Us
             </div>
-            <div className="ml-6 text-black text-2xl ">
-                Reservation Form
+            <div className="ml-6 underline-animation cursor-pointer text-black text-xl ">
+              Blogs
             </div>
           </div>
 
 
-          <div className="flex items-center gap-x-6 h-full justify-end">
-            <p className="text-black">Quote & Reserve</p>
+          <div className="hidden lg:flex items-center gap-x-6 h-full justify-end">
+            <Button>Get a Quote</Button>
+            <Button>Login/Register</Button>
           </div>
+          <MobileMenu />
         </nav>
-        {/* <MobileMenu /> */}
       </header>
     </div>
   )

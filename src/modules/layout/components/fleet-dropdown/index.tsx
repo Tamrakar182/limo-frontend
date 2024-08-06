@@ -19,10 +19,10 @@ const FleetDropdown = () => {
             <div className="flex items-center h-full">
                 <Popover className="h-full flex">
                     <>
-                        <Link href="/about-us" className="relative flex h-full text-small-regular" passHref>
+                        <Link href="/about-us" className="relative flex h-full" passHref>
                             <PopoverButton
                                 className={clsx(
-                                    "relative h-full flex text-black text-2xl items-center transition-all ease-out duration-200 focus:outline-none"
+                                    "relative h-full underline-animation flex text-black text-xl items-center transition-all ease-out duration-200 focus:outline-none"
                                 )}
                                 onClick={() => push("/about-us")}
                             >

@@ -6,7 +6,8 @@ const nextConfig = {
           "localhost",
           "loremflickr.com",
           "images.unsplash.com",
-          "images.pexels.com"
+          "images.pexels.com",
+          "pbs.twimg.com"
         ],
       },
 };

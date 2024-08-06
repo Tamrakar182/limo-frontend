@@ -24,7 +24,7 @@ const ServicesDropdown = () => {
                         <Link href="/store" className="relative flex h-full" passHref>
                             <PopoverButton
                                 className={clsx(
-                                    "relative h-full flex text-black text-2xl items-center transition-all ease-out duration-200 focus:outline-none"
+                                    "relative h-full flex underline-animation text-black text-xl items-center transition-all ease-out duration-200 focus:outline-none"
                                 )}
                                 onClick={() => push("/store")}
                             >

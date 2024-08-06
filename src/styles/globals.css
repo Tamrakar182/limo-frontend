@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -146,6 +147,29 @@
   input[type="number"] {
     -moz-appearance: textfield;
   }
+
+  /* Hide calendar icon in date input */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Hide clock icon in time input */
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  input[type="time"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
 }
 
 @layer components {
@@ -155,6 +179,25 @@
 
   .hidden-until-loaded {
     visibility: hidden;
+  }
+
+  .button-hover {
+    transform: translate(2px, -2px);
+    box-shadow: -4px 4px 0 currentColor;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .image-slide {
+    animation: fadeIn 1s ease-in-out;
   }
 
   .loaded {
@@ -233,6 +276,10 @@
     background-color: currentColor;
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
+  }
+
+  .zInfinite {
+    z-index: 999;
   }
 
   .underline-animation:hover::after {
