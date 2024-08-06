@@ -1,12 +1,16 @@
 import { Fragment } from 'react'
 import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react'
 import { Xmark } from 'iconoir-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
 
 interface Props {
     state: boolean;
     handleClose: (value: boolean) => void
 }
-export default function MobileMenuOverlay({ state, handleClose}: Props) {
+export default function MobileMenuOverlay({ state, handleClose }: Props) {
+    const pathname = usePathname();
     return (
         <Transition show={state} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={handleClose}>
@@ -50,7 +54,23 @@ export default function MobileMenuOverlay({ state, handleClose}: Props) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="relative mt-6 flex-1 px-4 sm:px-6">{/* Your content */}</div>
+                                        <div className="relative flex mt-6 flex-1 flex-col justify-center items-center px-4 sm:px-6">
+                                            <div className="p-4 text-2xl" onClick={() => handleClose(false)}>
+                                                <Link href="/" className={clsx({ "font-bold": pathname === "/" })}>Home</Link>
+                                            </div>
+                                            <div className="p-4 text-2xl" onClick={() => handleClose(false)}>
+                                                <Link href="/services" className={clsx({ "font-bold": pathname === "/services" })}>Services</Link>
+                                            </div>
+                                            <div className="p-4 text-2xl" onClick={() => handleClose(false)}>
+                                                <Link href="/fleet" className={clsx({ "font-bold": pathname === "/fleet" })}>Fleet</Link>
+                                            </div>
+                                            <div className="p-4 text-2xl" onClick={() => handleClose(false)}>
+                                                <Link href="/aboutus" className={clsx({ "font-bold": pathname === "/aboutus" })}>About Us</Link>
+                                            </div>
+                                            <div className="p-4 text-2xl" onClick={() => handleClose(false)}>
+                                                <Link href="/login" className={clsx({ "font-bold": pathname === "/login" })}>Account</Link>
+                                            </div>
+                                        </div>
                                     </div>
                                 </DialogPanel>
                             </TransitionChild>

@@ -12,17 +12,23 @@ const images = [
 
 const HeroSection = () => {
     const [currentImage, setCurrentImage] = useState(0);
+    const [fade, setFade] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+            setFade(true);
+            setTimeout(() => {
+                setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+                setFade(false);
+            }, 1000);
         }, 5000);
         return () => clearInterval(interval);
     }, []);
 
+
     return (
         <div className="relative w-full h-screen">
-            <div className="absolute inset-0">
+            <div className={`absolute inset-0 transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}>
                 <BlurImage
                     src={images[currentImage]}
                     alt="Background image"

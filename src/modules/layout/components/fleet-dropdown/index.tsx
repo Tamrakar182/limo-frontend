@@ -24,7 +24,7 @@ const FleetDropdown = () => {
                                 className={clsx(
                                     "relative h-full underline-animation flex text-black text-xl items-center transition-all ease-out duration-200 focus:outline-none"
                                 )}
-                                onClick={() => push("/about-us")}
+                                onClick={() => push("/fleet")}
                             >
                                 Our Fleet
                             </PopoverButton>

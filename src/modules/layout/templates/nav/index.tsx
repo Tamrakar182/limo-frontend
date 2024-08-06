@@ -14,10 +14,12 @@ import FleetDropdown from "@modules/layout/components/fleet-dropdown"
 import Button from "@modules/common/components/button"
 import { Phone, Facebook, Twitter, Instagram, Mail } from "iconoir-react"
 import MobileMenu from "../mobile-menu"
+import { useRouter } from "next/navigation"
 
 const NavBar = () => {
   const pathname = usePathname()
   const [isHome, setIsHome] = useState(true)
+  const router = useRouter();
 
   const { state, servicesDropdown, fleet } = useDropdown();
 
@@ -81,17 +83,21 @@ const NavBar = () => {
               <FleetDropdown />
             </div>
             <div className="ml-6 underline-animation cursor-pointer text-black text-xl ">
-              About Us
+              <Link href="/aboutus">
+                About Us
+              </Link>
             </div>
             <div className="ml-6 underline-animation cursor-pointer text-black text-xl ">
-              Blogs
+              <Link href="/blog">
+                Blogs
+              </Link>
             </div>
           </div>
 
 
           <div className="hidden lg:flex items-center gap-x-6 h-full justify-end">
-            <Button>Get a Quote</Button>
-            <Button>Login/Register</Button>
+            <Button onClick={() => router.push("/quote")}>Get a Quote</Button>
+            <Button onClick={() => router.push("/login")}>Login/Register</Button>
           </div>
           <MobileMenu />
         </nav>

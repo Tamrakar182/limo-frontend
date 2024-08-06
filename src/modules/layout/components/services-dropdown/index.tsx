@@ -26,7 +26,7 @@ const ServicesDropdown = () => {
                                 className={clsx(
                                     "relative h-full flex underline-animation text-black text-xl items-center transition-all ease-out duration-200 focus:outline-none"
                                 )}
-                                onClick={() => push("/store")}
+                                onClick={() => push("/services")}
                             >
                                 Our Services
                             </PopoverButton>

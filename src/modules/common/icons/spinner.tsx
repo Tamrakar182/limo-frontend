@@ -22,7 +22,7 @@ const Spinner: React.FC<IconProps> = ({
                 cy="12"
                 r="10"
                 stroke={color}
-                strokeWidth="4"
+                strokeWidth="2"
             ></circle>
             <path
                 className="opacity-75"
